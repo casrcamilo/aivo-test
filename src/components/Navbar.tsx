@@ -3,23 +3,17 @@ import {
   Box,
   AppBar,
   Toolbar,
-  Button,
 } from "@mui/material";
-import { Link, useNavigate } from 'react-router-dom'
-import Logo from '../ai-stream-logo.png'
+import { Link } from 'react-router-dom'
+import Logo from '../assets/ai-stream-logo.png'
+import UserMenu from "./UserMenu";
 
 interface NavbarProps {}
 
 const Navbar: FC<NavbarProps> = () => {
-  const navigate = useNavigate()
-
-  const handleNavigateToLogin = () => {
-    navigate('/login')
-  }
-
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" color="primary">
+      <AppBar position="static" color="primary" component="nav">
         <Toolbar 
           sx={{
             display: 'flex',
@@ -33,9 +27,7 @@ const Navbar: FC<NavbarProps> = () => {
               style={{ height: 60 }} 
             />
           </Link>
-          <Button variant="contained" color="secondary" onClick={handleNavigateToLogin}>
-            Login
-          </Button>
+          <UserMenu />
         </Toolbar>
       </AppBar>
     </Box>
