@@ -1,12 +1,13 @@
+// Libraries
 import React from "react";
-import "@fontsource/roboto/300.css";
-import "@fontsource/roboto/400.css";
-import "@fontsource/roboto/500.css";
-import "@fontsource/roboto/700.css";
-import Navbar from "./components/Navbar"
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+// Containers
 import Login from "./containers/Login";
 import Home from "./containers/Home";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+// Components
+import Navbar from "./components/Navbar"
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
       <Navbar />
       <main>
         <Routes>
-          <Route path="/"element={<Home />} />
+          <Route path="/" element={<Home/>}/>
           <Route path="/login" element={<Login />} />
         </Routes>
       </main>

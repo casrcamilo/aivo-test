@@ -1,12 +1,21 @@
 import React, { FC, useState,  } from 'react'
-import { Avatar, Typography, Button, Menu, MenuItem, ListItemIcon, Stack } from '@mui/material'
+import {
+  Avatar,
+  Typography,
+  Button,
+  Menu,
+  MenuItem,
+  ListItemIcon,
+  Stack,
+  CircularProgress,
+} from '@mui/material'
 import Logout from '@mui/icons-material/Logout';
 import { useAuth0 } from "@auth0/auth0-react";
 
 interface UserMenuProps {}
 
 const UserMenu: FC<UserMenuProps> = () => {
-  const { user, isAuthenticated, logout } = useAuth0()
+  const { user, isAuthenticated, isLoading, logout } = useAuth0()
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
 
@@ -20,20 +29,25 @@ const UserMenu: FC<UserMenuProps> = () => {
 
   const handleLogout = () => {
     setAnchorEl(null);
-    logout({ logoutParams: { returnTo: '/login'} })
+    logout({ logoutParams: { returnTo: window.location.origin } })
   }
 
-  if (!isAuthenticated) return null
+  if (!isAuthenticated && !isLoading) return null
   
   return (
     <>
       <Button color="secondary" variant="text" onClick={handleClick}>
-        <Stack direction="row" spacing={2} sx={{ alignItems: 'center' }}>
-          <Typography variant="button">
-            {user?.name}
-          </Typography>
-          <Avatar src={user?.picture} />
+        {isLoading && <div className="loading-container">
+          <CircularProgress color="secondary" />
+        </div>}
+        {!isLoading && isAuthenticated &&
+          <Stack direction="row" spacing={2} sx={{ alignItems: 'center' }}>
+            <Typography variant="button">
+              {user?.name}
+            </Typography>
+            <Avatar src={user?.picture} />
         </Stack>
+        }
       </Button>
       <Menu
       anchorEl={anchorEl}
