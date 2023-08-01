@@ -9,7 +9,7 @@ import Home from "./containers/Home";
 // Components
 import Navbar from "./components/Navbar"
 
-function App() {
+const App = () => {
   return (
     <Router>
       <Navbar />
