@@ -13,13 +13,19 @@ interface NavbarProps {}
 const Navbar: FC<NavbarProps> = () => {
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" color="primary" component="nav">
+      <AppBar 
+        position="fixed" 
+        color="primary" 
+        component="nav"
+        sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}
+      >
         <Toolbar 
           sx={{
             display: 'flex',
             flex: 1,
             justifyContent: 'space-between'
-          }}>
+          }}
+        >
           <Link to="/">
             <img 
               src={Logo} 

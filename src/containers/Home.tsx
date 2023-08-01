@@ -1,11 +1,11 @@
-import React, { FC, useEffect, useMemo } from 'react'
+import React, { FC, useEffect } from 'react'
 import { useAuth0 } from "@auth0/auth0-react";
 import { useNavigate } from 'react-router-dom'
 import { fetchMovies } from '../actions';
 import { connect } from 'react-redux';
-import { useAppSelector } from '../hooks';
-import { Container, Grid, Box } from '@mui/material'
-import MovieCard from '../components/MovieCard';
+import { Container, Box } from '@mui/material'
+import MovieList from '../components/MovieList';
+import FilterSidebar from '../components/FiltersSidebar';
 
 interface HomeProps {
   fetchData: () => void
@@ -14,7 +14,6 @@ interface HomeProps {
 const Home: FC<HomeProps> = ({ fetchData }) => {
   const { isAuthenticated, isLoading } = useAuth0()
   const navigate = useNavigate()
-  const movies = useAppSelector(state => state.movies)
 
   useEffect(() => {
     // User not authenticated
@@ -28,18 +27,16 @@ const Home: FC<HomeProps> = ({ fetchData }) => {
     }
   }, [isAuthenticated, isLoading])
 
-  const renderMovies = useMemo(() => movies.map((movie) => 
-    <Grid key={movie.title} item xs={12} sm={6} lg={4} >
-      <MovieCard movie={movie}/>
-    </Grid>
-  ), [movies])
-
   return (
-    <Box sx={{ backgroundColor: 'rgb(245 222 179 / 30%)' }}>
+    <Box
+      sx={{ 
+        backgroundColor: 'rgb(245 222 179 / 30%)', 
+        paddingTop: '64px' 
+      }}
+    >
       <Container fixed >
-        <Grid container spacing={2} sx={{ marginTop: 0 }}>
-          {renderMovies}
-        </Grid>
+        <FilterSidebar />
+        <MovieList />
       </Container>
     </Box>
   )
