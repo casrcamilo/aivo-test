@@ -1,5 +1,6 @@
 import { Dispatch } from '@reduxjs/toolkit'
 import axios from 'axios'
+import { toast } from "react-toastify"
 import {
   ISetMovies,
   ISetProgramType,
@@ -48,5 +49,12 @@ export const fetchMovies = () => (dispatch: Dispatch): void => {
     .get('http://localhost:3001/entries')
     .then((response) => {
       dispatch(setMovies(response.data))
+    })
+    .catch((error) => {
+      console.error(error)
+      dispatch(setMovies([]))
+      toast.error("There was an error trying to get the movies, please try again", {
+        position: toast.POSITION.BOTTOM_CENTER
+      });
     })
 }

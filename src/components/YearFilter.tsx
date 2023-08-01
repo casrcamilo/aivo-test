@@ -37,7 +37,6 @@ const YearFilter: FC<YearFilterProps> = () => {
   return (
     <Box sx={{ padding: '16px 24px' }}>
       <Slider
-        getAriaLabel={() => 'Minimum distance'}
         value={yearRange}
         onChange={handleChange}
         valueLabelDisplay="auto"
