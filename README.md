@@ -2,45 +2,39 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Installation Guide
 
-In the project directory, you can run:
+Run this command for install all dependencies
 
-### `npm start`
+`npm install`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Now you can run the development server
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+`npm run start`
 
-### `npm test`
+You can now view the app in the browser.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+`http://localhost:3000`
 
-### `npm run build`
+## Mount Fake JSON response
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+To start the JSON server you can run this command after install all dependencies
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+`npx json-server --watch movies.json --port 3001`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+this will mount a server in the port 3001 that response with the list of the movies
 
-### `npm run eject`
+## Libraries
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+these are the libraries used in the project
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+ - **Auth0:**: SDK to manage user authentication
+ - **MaterialUI:** A React Component Library that implements Google's Material design
+ - **React-Redux:** To Manage the app state
+ - **Thunk:** It allows writing functions with logic inside that can interact with a Redux store's `dispatch` and `getState` methods.
+ - **Axios:** a library to manage all HTTP requests
+ - and more...
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Responsive
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+This app is 99% responsive
