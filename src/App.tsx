@@ -8,12 +8,14 @@ import Home from "./containers/Home";
 
 // Components
 import Navbar from "./components/Navbar"
+import { Toolbar } from "@mui/material";
 
 const App = () => {
   return (
     <Router>
       <Navbar />
-      <main>
+      <main >
+        <Toolbar />
         <Routes>
           <Route path="/" element={<Home/>}/>
           <Route path="/login" element={<Login />} />

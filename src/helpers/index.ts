@@ -1,5 +1,10 @@
 import { Movie } from "../reducers"
 
+export const ORDER_KEYS = {
+  Title: 'title',
+  Year: 'releaseYear'
+}
+
 export const getFilteredMovies = ({
   movies,
   yearRange,
@@ -41,12 +46,14 @@ export const getFilteredMovies = ({
   const sortedMovies = finalMovies.sort((a, b) => {
     const [orderKey, orderDirection] = order.split(' ')
 
-    if (orderDirection == 'ASC') {
-      return a[orderKey as keyof typeof a] < b[orderKey as keyof typeof b] ? 1 : -1
+    const formattedKey = ORDER_KEYS[orderKey as keyof typeof ORDER_KEYS]
+
+    if (orderDirection == 'DESC') {
+      return a[formattedKey as keyof typeof a] < b[formattedKey as keyof typeof b] ? 1 : -1
     }
 
-    if (orderDirection === 'DESC') {
-      return b[orderKey as keyof typeof b] > a[orderKey as keyof typeof a] ? -1 : 1
+    if (orderDirection === 'ASC') {
+      return b[formattedKey as keyof typeof b] > a[formattedKey as keyof typeof a] ? -1 : 1
     }
 
     return 1

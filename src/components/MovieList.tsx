@@ -1,8 +1,9 @@
 import React, { FC, useMemo } from 'react'
-import { Grid } from '@mui/material'
+import { Grid, Typography, Box } from '@mui/material'
 import { useAppSelector } from '../hooks';
 import MovieCard from './MovieCard';
 import { getFilteredMovies } from '../helpers';
+import OrderButton from './OrderButton';
 
 interface MovieListProps {
 
@@ -37,9 +38,23 @@ const MovieList: FC<MovieListProps> = () => {
   ])
   
   return (
-    <Grid container spacing={2} sx={{ marginTop: 0 }}>
-      {renderMovies}
-    </Grid>
+    <>
+      <Box 
+        sx={{ 
+          marginTop: (theme) => theme.spacing(3), 
+          display: 'flex',
+          alignItems: 'center'
+        }}
+      >
+        <Typography variant='body2' sx={{ flexGrow: 1 }}>
+          {`${renderMovies.length} movies found`}
+        </Typography>
+        <OrderButton />
+      </Box>
+      <Grid container spacing={2} sx={{ marginTop: (theme) => theme.spacing(1)}}>
+        {renderMovies}
+      </Grid>
+    </>
   )
 }
 

@@ -3,7 +3,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { useNavigate } from 'react-router-dom'
 import { fetchMovies } from '../actions';
 import { connect } from 'react-redux';
-import { Container, Box } from '@mui/material'
+import { Container, Box, CssBaseline } from '@mui/material'
 import MovieList from '../components/MovieList';
 import FilterSidebar from '../components/FiltersSidebar';
 
@@ -31,10 +31,12 @@ const Home: FC<HomeProps> = ({ fetchData }) => {
     <Box
       sx={{ 
         backgroundColor: 'rgb(245 222 179 / 30%)', 
-        paddingTop: '64px' 
+        height: 'calc(100% - 64px)',
+        overflowY: 'scroll'
       }}
     >
-      <Container fixed >
+      <CssBaseline />
+      <Container fixed>
         <FilterSidebar />
         <MovieList />
       </Container>
