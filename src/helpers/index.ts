@@ -24,7 +24,8 @@ export const getFilteredMovies = ({
     }
     
     // filter by name, exclude if the movie doesn't include the text
-    if (nameFilter !== '' && !title.search(nameFilter)) {
+    const nameFilterRegExp = new RegExp(nameFilter, 'i')
+    if (nameFilter !== '' && title.search(nameFilterRegExp) < 0) {
       return false
     }
 

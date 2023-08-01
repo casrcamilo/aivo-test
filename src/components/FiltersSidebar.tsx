@@ -7,6 +7,8 @@ import {
   Theaters,
 } from '@mui/icons-material'
 import YearFilter from './YearFilter'
+import ProgramTypeFilter from './ProgramTypeFilter'
+import NameFilter from './NameFilter'
 
 interface FilterSidebar {
 
@@ -31,6 +33,7 @@ const FilterSidebar: FC<FilterSidebar> = () => {
     >
       <Toolbar />
       <Box sx={{ overflow: 'auto', padding: '16px 0' }}>
+        <NameFilter />
         <List disablePadding>
           <ListItemButton onClick={() => setYearFilterOpen(!yearFilterOpen)}>
             <ListItemIcon>
@@ -53,7 +56,7 @@ const FilterSidebar: FC<FilterSidebar> = () => {
           </ListItemButton>
         </List>
         <Collapse in={programTypeFilterOpen} timeout="auto" unmountOnExit>
-          open
+          <ProgramTypeFilter />
         </Collapse>
       </Box>
     </Drawer>
