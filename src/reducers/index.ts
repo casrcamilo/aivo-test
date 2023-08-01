@@ -21,10 +21,18 @@ export interface Movie {
 }
 export interface AppState {
   movies: Array<Movie>
+  yearRange: Array<number>
+  programType: Array<string>
+  nameFilter: string
+  order: string
 }
 
 const appState: AppState = {
-  movies: []
+  movies: [],
+  yearRange: [0, 1],
+  programType: ['series', 'movie'],
+  nameFilter: '',
+  order: 'Name ASC'
 }
 
 export interface IClearStateInterface {
@@ -36,9 +44,33 @@ export interface ISetMovies {
   payload: Array<Movie>
 }
 
+export interface ISetYearRange {
+  type: typeof ACTIONS.SET_YEAR_RANGE;
+  payload: Array<number>
+}
+
+export interface ISetProgramType{
+  type: typeof ACTIONS.SET_PROGRAM_TYPE;
+  payload: Array<string>
+}
+
+export interface ISetNameFilter {
+  type: typeof ACTIONS.SET_NAME_FILTER;
+  payload: string
+}
+
+export interface ISetOrder {
+  type: typeof ACTIONS.SET_ORDER;
+  payload: string
+}
+
 type Action =
   | IClearStateInterface
   | ISetMovies
+  | ISetYearRange
+  | ISetProgramType
+  | ISetNameFilter
+  | ISetOrder
 
 const appReducer = (state = appState, action: Action): AppState =>
   produce(state, (draft) => {
@@ -48,6 +80,18 @@ const appReducer = (state = appState, action: Action): AppState =>
       }
       case ACTIONS.SET_MOVIES: 
         draft.movies = action.payload
+        break
+      case ACTIONS.SET_YEAR_RANGE: 
+        draft.yearRange = action.payload
+        break
+      case ACTIONS.SET_PROGRAM_TYPE: 
+        draft.programType = action.payload
+        break
+      case ACTIONS.SET_NAME_FILTER: 
+        draft.nameFilter = action.payload
+        break
+      case ACTIONS.SET_ORDER: 
+        draft.order = action.payload
     }
   })
 

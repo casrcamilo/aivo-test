@@ -6,6 +6,7 @@ import {
   CalendarMonth,
   Theaters,
 } from '@mui/icons-material'
+import YearFilter from './YearFilter'
 
 interface FilterSidebar {
 
@@ -40,7 +41,7 @@ const FilterSidebar: FC<FilterSidebar> = () => {
           </ListItemButton>
         </List>
         <Collapse in={yearFilterOpen} timeout="auto" unmountOnExit>
-          open
+          <YearFilter />
         </Collapse>
         <List disablePadding>
           <ListItemButton onClick={() => setProgramTypeFilterOpen(!programTypeFilterOpen)}>
