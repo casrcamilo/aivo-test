@@ -36,7 +36,7 @@ const Home: FC<HomeProps> = ({ fetchData }) => {
       }}
     >
       <CssBaseline />
-      <Container fixed>
+      <Container fixed maxWidth="md" sx={{ my: (theme) => theme.spacing(2)}}>
         <FilterSidebar />
         <MovieList />
       </Container>

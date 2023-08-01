@@ -3,8 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { 
   Grid, 
   Card, 
-  CardContent, 
-  CardActions, 
+  CardContent,
   Typography, 
   Button,
   CircularProgress,
@@ -35,17 +34,15 @@ const Login: FC<LoginProps> = () => {
             <CircularProgress size={64} color="secondary" />
           </div>}
           {!isLoading && !isAuthenticated && <>
-            <CardContent sx={{ textAlign: "center" }}>
+            <CardContent className='login-card-content'>
               <img 
+                className='login-logo'
                 src={Logo} 
                 alt="page logo"
-                style={{ height: 100 }} 
               />
               <Typography variant="body1" align="center">
                 Welcome back, please login to your account to view the best movies
               </Typography>
-            </CardContent>
-            <CardActions>
               <Button 
                 color="secondary" 
                 variant="contained" 
@@ -54,7 +51,7 @@ const Login: FC<LoginProps> = () => {
               >
                 Login
               </Button>
-            </CardActions>
+            </CardContent>
           </>}
         </Card>
       </div>

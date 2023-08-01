@@ -25,6 +25,7 @@ export interface AppState {
   programType: Array<string>
   nameFilter: string
   order: string
+  isFilterSidebarOpen: boolean
 }
 
 const appState: AppState = {
@@ -32,7 +33,8 @@ const appState: AppState = {
   yearRange: [0, 1],
   programType: ['series', 'movie'],
   nameFilter: '',
-  order: 'Name ASC'
+  order: 'Title ASC',
+  isFilterSidebarOpen: true
 }
 
 export interface IClearStateInterface {
@@ -64,6 +66,11 @@ export interface ISetOrder {
   payload: string
 }
 
+export interface ISetFilterSidebarOpen {
+  type: typeof ACTIONS.SET_FILTER_SIDEBAR_OPEN;
+  payload: boolean
+}
+
 type Action =
   | IClearStateInterface
   | ISetMovies
@@ -71,6 +78,7 @@ type Action =
   | ISetProgramType
   | ISetNameFilter
   | ISetOrder
+  | ISetFilterSidebarOpen
 
 const appReducer = (state = appState, action: Action): AppState =>
   produce(state, (draft) => {
@@ -92,6 +100,9 @@ const appReducer = (state = appState, action: Action): AppState =>
         break
       case ACTIONS.SET_ORDER: 
         draft.order = action.payload
+        break
+      case ACTIONS.SET_FILTER_SIDEBAR_OPEN: 
+        draft.isFilterSidebarOpen = action.payload
     }
   })
 

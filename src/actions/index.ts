@@ -7,6 +7,7 @@ import {
   ISetNameFilter,
   ISetOrder,
   Movie,
+  ISetFilterSidebarOpen,
 
 } from '../reducers'
 import { ACTIONS } from './actionTypes'
@@ -36,6 +37,12 @@ export const setOrder = (order: string): ISetOrder => ({
   payload: order,
 })
 
+export const setFilterSidebarOpen = (isFilterSidebarOpen: boolean): ISetFilterSidebarOpen => ({
+  type: ACTIONS.SET_FILTER_SIDEBAR_OPEN,
+  payload: isFilterSidebarOpen,
+})
+
+// Async functions
 export const fetchMovies = () => (dispatch: Dispatch): void => {
   axios
     .get('http://localhost:3001/entries')

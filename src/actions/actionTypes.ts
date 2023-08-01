@@ -8,4 +8,8 @@ export enum ACTIONS {
   SET_PROGRAM_TYPE = '@aivo-test/SET_PROGRAM_TYPE',
   SET_NAME_FILTER = '@aivo-test/SET_NAME_FILTER',
   SET_ORDER = '@aivo-test/SET_ORDER',
+
+  // Config
+  SET_FILTER_SIDEBAR_OPEN = '@aivo-test/SET_FILTER_SIDEBAR_OPEN',
+
 }
